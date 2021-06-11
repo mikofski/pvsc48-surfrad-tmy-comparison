@@ -22,7 +22,7 @@
 \title{Comparison of Predicted PV System Performance with SURFRAD versus TMY}
 
 \author{\IEEEauthorblockN{Mark A. Mikofski and Rounak Kharait}
-	\IEEEauthorblockA{DNV, Oakland, CA, 9612, USA }}
+	\IEEEauthorblockA{DNV, Oakland, CA, 94612, USA }}
 
 \maketitle
 
@@ -38,7 +38,7 @@ SURFRAD, TMY, irradiance, PV, performance, prediction
 Investors require accurate predictions of PV system performance to quantify and manage their risks. However, there is growing concern about under-performing PV systems \cite{Matsui2020}. Predictions commonly use TMY data-sets developed from historical data. There are many sources of TMY data sets, but we focused on three publicly available TMY data-sets from the National Renewable Energy Laboratory (NREL), and compared them with accurate, ground-based, high-frequency SURFRAD data at 7 sites from 1995 until present day \cite{Augustine2000} by simulating a fictional PV system. Our goal was to determine if the predictions with TMY data would yield the same median performance we simulated with the SURFRAD data, but we discovered the TMY over-predicted performance for all sites except Penn State, CA, and Sioux Falls, SD. The predictions with PSM3 were greater than predictions from all of the SURFRAD years at 5 of the 7 sites, the predictions with TMY2 were greater than 70-90\% of years at 5 of 7 sites, and predictions with TMY3 were closest to the SURFRAD median at 5 of 7 sites.
 
 \section{Methods}
-There are 7 SURFRAD \cite{Augustine2000} across the United States with 1 to 3 minute resolution. We used the SURFRAD measured global horizontal irradiance (GHI) and decomposed it into direct normal irradiance (DNI) and diffuse horizontal irradiance, then transposed it to the plane of the array accounting for diffuse components, ground reflection, and incidence angle modifiers. We used RdTools \cite{Jordan2018} to get clear sky temperatures to estimate module temperatures. Then we used pvlib \cite{F.Holmgren2018} to model a fictional single-axis trackers system with typical 300[W] mono-crystalline silicon PV panel and predict the power. Then we re-averaged the data hourly and summed each day (\ref{eq:daily-energy}) and year (\ref{eq:annual-energy}). All years that had less than 350 days were removed and the annual energy was scaled to a full year accounting for leap years. We normalized by the module nameplate of 300[W] to get daily and annual DC capacity factors (CP) using (\ref{eq:daily-capacity-factor}) and (\ref{eq:annual-capacity-factor}). Then we repeated the simulations with PSM3 \cite{Habte2017}, TMY2 \cite{Marion1995}, and TMY3 \cite{Wilcox2008}.
+There are 7 SURFRAD stations \cite{Augustine2000} across the United States with 1 to 3 minute resolution. We used the SURFRAD measured global horizontal irradiance (GHI) and decomposed it into direct normal irradiance (DNI) and diffuse horizontal irradiance, then transposed it to the plane of the array accounting for diffuse components, ground reflection, and incidence angle modifiers. We used RdTools \cite{Jordan2018} to get clear sky temperatures to estimate module temperatures. Then we used pvlib \cite{F.Holmgren2018} to model a fictional single-axis trackers system with typical 300[W] mono-crystalline silicon PV panel and predict the power. Then we re-averaged the data hourly and summed each day (\ref{eq:daily-energy}) and year (\ref{eq:annual-energy}). All years that had less than 350 days were removed and the annual energy was scaled to a full year accounting for leap years. We normalized by the module nameplate of 300[W] to get daily and annual DC capacity factors (CP) using (\ref{eq:daily-capacity-factor}) and (\ref{eq:annual-capacity-factor}). Then we repeated the simulations with PSM3 \cite{Habte2017}, TMY2 \cite{Marion1995}, and TMY3 \cite{Wilcox2008}.
 
 \begin{equation}
 E_\text{daily} = \sum_\text{time=1AM}^\text{12AM}{E_\text{hourly}} \label{eq:daily-energy}
@@ -56,7 +56,7 @@ E_\text{annual }= \sum_\text{day=1}^\text{365}{E_\text{daily}} \label{eq:annual-
 \mathit{CP}_\text{annual} = \frac{E_\text{annual}}{ 8760\text{[h]} \text{Nameplate[W]} } \label{eq:annual-capacity-factor}
 \end{equation}
 
-There clear sky air temperatures used with the SURFRAD data were scaled to measured GHI, but the baseline was zero, and the GHI was unfiltered. In the final report we will scale the air temperature to the daily $\Delta T = T_{max} - T_{min}$ and use a 10-minute rolling average to smooth the GHI to match the thermal capacitance of air. We will also compare the scaled air temperatures with the TMY measured temperatures for validation.
+The clear sky air temperatures used with the SURFRAD data were scaled to measured GHI, but the baseline was zero, and the GHI was unfiltered. In the final report we will scale the air temperature to the daily $\Delta T = T_{max} - T_{min}$ and use a 10-minute rolling average to smooth the GHI to match the thermal capacitance of air. We will also compare the scaled air temperatures with the TMY measured temperatures for validation.
 
 Also the albedo was inconsistently applied. The SURFRAD and TMY2 used constant 0.25 albedo, while PSM3 and TMY3 used albedo supplied in the weather file. For the final report we will use the constant 0.25 for all simulations.
 
