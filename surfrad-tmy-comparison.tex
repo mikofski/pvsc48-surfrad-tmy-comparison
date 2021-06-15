@@ -108,19 +108,19 @@ We plotted histograms of the annual predictions using SURFRAD data for each of t
 \end{figure}
 
 \begin{table}[htbp]
-\caption{Summary of Predicted SURFRAD Medians Compared with TMY}
+\caption{Summary of Predicted SURFRAD Annual Capacity Factors Compared with TMY}
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-\textbf{SURFRAD Station} & \textbf{\textit{P50}}& \textbf{\textit{PSM3}}& \textbf{\textit{TMY2}}& \textbf{\textit{TMY3}} \\
+\textbf{SURFRAD Station} & \textbf{\textit{P50}}& \textbf{\textit{P90}}& \textbf{\textit{PSM3}}& \textbf{\textit{TMY2}}& \textbf{\textit{TMY3}} \\
 \hline
-Bondville, IL    & 20.1\%& 21.9\%& 21.1\%& 20.3\% \\
-Boulder, CO      & 23.1\%& 23.7\%& 23.8\%& 23.5\% \\
-Desert Rock, NV  & 28.3\%& 29.6\%&       & 28.7\% \\
-Fort Peck, MT    & 20.2\%& 21.0\%& 20.7\%& 20.4\% \\
-Goodwin Creek, MS& 21.0\%& 23.8\%& 22.5\%& 21.8\% \\
-Penn State, PA   & 18.5\%& 20.1\%& 18.1\%& 17.4\% \\
-Sioux Falls, SD  & 20.6\%& 22.0\%& 21.1\%& 20.4\% \\
+Bondville, IL    & 20.2\%& 18.7\%& 21.9\%& 21.1\%& 20.7\% \\
+Boulder, CO      & 23.4\%& 22.9\%& 23.7\%& 23.8\%& 23.5\% \\
+Desert Rock,NV   & 28.6\%& 27.5\%& 29.7\%&       & 28.8\% \\
+Fort Peck, MT    & 20.3\%& 19.5\%& 21.0\%& 20.7\%& 20.8\% \\
+Goodwin Creek, MS& 21.1\%& 19.7\%& 23.9\%& 22.5\%& 21.9\% \\
+Penn State, PA   & 18.6\%& 17.2\%& 20.2\%& 18.1\%& 17.5\% \\
+Sioux Falls, SD  & 20.7\%& 19.6\%& 22.0\%& 21.1\%& 20.8\% \\
 \hline
 \end{tabular}
 \label{table:surfrad-tmy-summary}
@@ -128,6 +128,27 @@ Sioux Falls, SD  & 20.6\%& 22.0\%& 21.1\%& 20.4\% \\
 \end{table}
 
 Table~\ref{table:surfrad-tmy-summary} summarizes the results as annual capacity factors (\ref{eq:annual-capacity-factor}).
+
+\begin{table}[htbp]
+\caption{Summary of TMY Quantiles of SURFRAD Years}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{SURFRAD Station} & \textbf{\textit{PSM3}}& \textbf{\textit{WBAN}}& \textbf{\textit{TMY2}}& \textbf{\textit{USAF}}& \textbf{\textit{TMY3}} \\
+\hline
+Bondville, IL    & 96.2\%& 93822&  88.5\%&724390&  88.5\% \\
+Boulder, CO      & 56.0\%& 94018&  64.0\%&725650&  52.0\% \\
+Desert Rock, NV  & 100\% &      &        &723870&  81.8\% \\
+Fort Peck, MT    & 88.0\%& 94008&  76.0\%&727680&  80.0\% \\
+Goodwin Creek, MS& 100\% & 13893&  92.3\%&722359&  73.1\% \\
+Penn State, PA   & 100\% & 14778&  36.4\%&725125&  13.6\% \\
+Sioux Falls, SD  & 94.1\%& 14944&  70.6\%&726510&  58.8\% \\
+\hline
+\end{tabular}
+\label{table:surfrad-tmy-quantile-summary}
+\end{center}
+\end{table}
+
 
 \section{Conclusions}
 We studied the question of whether TMY data-sets are representative of the median predicted PV performance by comparing PV system simulations using TMY data with simulations using over 20 years of high-frequency, accurate, ground based SURFRAD measurements at 7 sites across the United States. We found that the TMY data-sets all over-predicted the median SURFRAD annual performance at 5 of 7 sites. The PSM3 predictions were greater than the median for all sites, and greater than 100\% of years in 5 of 7 sites. TMY2 predictions were greater than 70-90\% of years at 5 of 7 sites except Penn State, PA, where it was the closest to the median. Otherwise TMY3 predictions were closest to the SURFRAD median year at 5 of 7 sites, except Penn State, PA, and Desert Rock, NV, which didn't have a TMY2 site to compare with. This preliminary study suggests there is a strong positive bias for TMY2 and PSM3 but more study is necessary. In the final report, we will revise the air temperatures used in the SURFRAD simulations, which may tend to make over-predictions even greater. We will also use consistent albedo for all sites.
