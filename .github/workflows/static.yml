@@ -1,0 +1,39 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches:
+    - main
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3     
+
+    - name: Install latex
+      run: |
+        sudo apt install texlive texlive-science texlive-publishers
+        sudo apt install texlive-base texlive-latex-base texlive-latex-extra
+        sudo apt install texlive-latex-recommended texlive-fonts-recommended
+        sudo apt install texlive-lang-greek texlive-pictures texlive-plain-generic
+
+    - name: build site
+      run: |
+        pdflatex surfrad-tmy-comparison.tex
+        bibtex surfrad-tmy-comparison
+        pdflatex surfrad-tmy-comparison.tex
+        bibtex surfrad-tmy-comparison
+        pdflatex surfrad-tmy-comparison.tex
+        mkdir docs
+        cp surfrad-tmy-comparison.* docs/
+
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.9.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs
